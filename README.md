@@ -1,6 +1,6 @@
 # OpenVPN-Servers-Configuration-files-Downloader
 
-OpenVPN-Servers-Configuration-files-Downloader is a small python program which retrieves vpn servers data from vpngate.net and extract openvpn configuration files from the data. All rights reserved to Mohammed Abdelmonem, mohammedhll222@gmail.com
+OpenVPN-Servers-Configuration-files-Downloader is a small python program which retrieves vpn servers data from www.vpngate.net and extract openvpn configuration files from the data. All rights reserved to Mohammed Abdelmonem, mohammedhll222@gmail.com
 
 hosts_manager creates .ovpn files inside 'ovpn files/' directory numbered from 1 to 10 based on quality, servers speed, number of sessions and ping response time
 
