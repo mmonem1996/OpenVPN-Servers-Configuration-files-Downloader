@@ -64,7 +64,7 @@ def create_ovpn_files(servers_count, hosts = None, management_sock_name = None):
 			if management_sock_name != None:
 				ovpn_file.write(f'\nmanagement {management_sock_name[0]} {management_sock_name[1]}\n')
 			plt = platform.system()
-			if plt == 'linux':
+			if plt == 'Linux':
 				ovpn_file.write('\nscript-security 2\nup /etc/openvpn/update-resolv-conf\ndown /etc/openvpn/update-resolv-conf')
 			elif plt == 'Windows':
 				ovpn_file.write('\n--block-outside-dns')
