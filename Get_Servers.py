@@ -27,7 +27,7 @@ def s_key(row): # sorts the servers
 def update_servers(): # if the user passes '--update' via the commandline, this function would pull the latest servers data 
 	try:
 		servers_csv = urllib.request.urlopen(VPN_SERVERS_ADDRESS).read().decode().split('\n')[1:]
-		with open(path.expanduser('~/Desktop/VPN servers/.servers.csv'), 'w') as cash_file:
+		with open('./.servers.csv', 'w') as cash_file:
 			print('updating servers...')
 			for row in servers_csv:
 				cash_file.write(row)
@@ -43,16 +43,16 @@ def load_hosts(hosts_csv, excluded):
 
 def create_ovpn_files(servers_count, hosts = None, management_sock_name = None):
 	print('creating ovpn files...')
-	logg = open('log.txt', 'w')
+	logg = open('./log.txt', 'w')
 	# due to connection problems arising between most vpn servers located in these two regions and my own ISP, i filtered them out
 	if hosts == None:
-		hosts = load_hosts(path.expanduser('~/Desktop/VPN servers/.servers.csv'), excluded= ['United States', 'United Kingdom'])
+		hosts = load_hosts('./.servers.csv', excluded= ['United States', 'United Kingdom'])
 	for count, row in enumerate(hosts):
 		if count + 1 > servers_count:
 			break
 		print(f"server {count + 1}: Speed {round(to_int(row['Speed'])/ 1024**2)} Mb/s  sessions {row['NumVpnSessions']}  location  {row['CountryLong']} ping {row['Ping']} ms")
 		logg.write(f"server {count + 1}: Speed {round(to_int(row['Speed'])/ 1024**2)} Mb/s  sessions {row['NumVpnSessions']}  location  {row['CountryLong']} ping {row['Ping']} ms\n")
-		with open(path.expanduser(f'~/Desktop/VPN servers/ovpn files/{count + 1}.ovpn'), 'w') as ovpn_file:
+		with open(f'./ovpn files/{count + 1}.ovpn', 'w') as ovpn_file:
 			ovpn_file.write("###############################################################################\n")
 			ovpn_file.write(f"# Host Name : {row['#HostName']}\n")
 			ovpn_file.write(f"# IP Address : {row['IP']}\n")
