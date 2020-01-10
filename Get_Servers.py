@@ -7,10 +7,12 @@
 import urllib.request, csv, sys, base64
 from os import path, getcwd, chdir
 import platform
+import pathlib
 
 VPN_SERVERS_ADDRESS = 'http://www.vpngate.net/api/iphone/'
 SERVERS_COUNT = 10
 CWD = path.dirname(path.realpath( __file__ ))
+pathlib.Path(path.join(CWD, 'ovpn files')).mkdir( exist_ok= True)
 
 def to_int(s):
 	try:
